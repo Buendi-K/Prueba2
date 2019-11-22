@@ -4,9 +4,8 @@
     <div formGroupName="nombrecompleto">
         <div class="form-group row" [ngClass]="{
         'has-danger':
-          forma.controls['nombrecompleto'].controls['nombre'].errors
-            ?.required ||
-          forma.controls['nombrecompleto'].controls['nombre'].errors?.minlength
+          forma.controls['nombrecompleto'].controls.nombre.invalid &&
+          forma.controls['nombrecompleto'].controls.nombre.touched
       }">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
@@ -27,7 +26,11 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row" [ngClass]="{
+            'has-danger':
+              forma.controls['nombrecompleto'].controls.apellido.invalid &&
+              forma.controls['nombrecompleto'].controls.apellido.touched
+          }">
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" />
@@ -39,34 +42,54 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{
+        'has-danger':
+          forma.controls['correo'].invalid &&
+          forma.controls['correo'].touched
+      }">
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-md-8">
             <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" />
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{
+        'has-danger':
+          forma.controls['username'].invalid &&
+          forma.controls['username'].touched
+      }">
         <label class="col-2 col-form-label">Username</label>
         <div class="col-md-8">
             <input class="form-control" type="text" placeholder="Usuario" formControlName="username" />
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{
+        'has-danger':
+          forma.controls['password1'].invalid &&
+          forma.controls['password1'].touched
+      }">
         <label class="col-2 col-form-label">Password</label>
         <div class="col-md-8">
             <input class="form-control" type="password" placeholder="Password" formControlName="password1" />
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{
+        'has-danger':
+          forma.controls['password2'].invalid &&
+          forma.controls['password2'].touched
+      }">
         <label class="col-2 col-form-label">Repita password</label>
         <div class="col-md-8">
             <input class="form-control" type="password" placeholder="Repita password" formControlName="password2" />
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{
+        'has-danger':
+          forma.controls['pasatiempos'].invalid &&
+          forma.controls['pasatiempos'].touched
+      }">
         <label class="col-2 col-form-label">Pasatiempos</label>
         <div class="col-md-8" formArrayName="pasatiempos">
             <input *ngFor="
@@ -88,7 +111,8 @@
       </button>
         </div>
     </div>
-
-    {{ forma.valid }}
+    <hr> {{ forma.valid }}
     <br> {{forma.status}}
+    <hr>
+    <pre>{{usuario | json}}</pre>
 </form>

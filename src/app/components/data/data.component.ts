@@ -19,7 +19,10 @@ export class DataComponent {
       apellido: "Buendia"
     },
     correo: "superubik@hotmail.com",
-    pasatiempos: ["Deporte", "Comer", "Dormir"]
+    pasatiempos: ["Deporte", "Comer", "Dormir"],
+    username: 'buendik',
+    password1: '',
+    password2: ''
   };
 
   constructor() {
@@ -45,6 +48,8 @@ export class DataComponent {
       password1: new FormControl("", Validators.required),
       password2: new FormControl()
     });
+
+
 
     // las validaciones tambien se puden poner así:
 
@@ -107,12 +112,16 @@ export class DataComponent {
     console.log(this.forma.value);
     console.log(this.forma);
 
-    // this.forma.reset({
-    //   nombrecompleto: {
-    //     nombre: "",
-    //     apellido: ""
-    //   },
-    //   correo: ""
-    // });
+    this.forma.reset({
+      nombrecompleto: {
+        nombre: "",
+        apellido: ""
+      },
+      correo: "",
+      pasatiempos: [],
+      username: '',
+      password1: '',
+      password2: ''
+    });
   }
 }
