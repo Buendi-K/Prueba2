@@ -27,10 +27,10 @@
         </div>
 
         <div class="form-group row" [ngClass]="{
-            'has-danger':
-              forma.controls['nombrecompleto'].controls.apellido.invalid &&
-              forma.controls['nombrecompleto'].controls.apellido.touched
-          }">
+        'has-danger':
+          forma.controls['nombrecompleto'].controls.apellido.invalid &&
+          forma.controls['nombrecompleto'].controls.apellido.touched
+      }">
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" />
@@ -43,76 +43,84 @@
     </div>
 
     <div class="form-group row" [ngClass]="{
-        'has-danger':
-          forma.controls['correo'].invalid &&
-          forma.controls['correo'].touched
-      }">
-        <label class="col-2 col-form-label">Correo</label>
-        <div class="col-md-8">
-            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" />
+      'has-danger':
+        forma.controls['correo'].invalid && forma.controls['correo'].touched
+    }">
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha cumpleaños</label>
+            <div class="col-md-8">
+                <input class="form-control" type="date" formControlName="cumple" />
+            </div>
         </div>
-    </div>
-    <div class="form-group row" [ngClass]="{
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" />
+            </div>
+        </div>
+        <div class="form-group row" [ngClass]="{
         'has-danger':
           forma.controls['username'].invalid &&
           forma.controls['username'].touched
       }">
-        <label class="col-2 col-form-label">Username</label>
-        <div class="col-md-8">
-            <input class="form-control" type="text" placeholder="Usuario" formControlName="username" />
+            <label class="col-2 col-form-label">Username</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" placeholder="Usuario" formControlName="username" />
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row" [ngClass]="{
+        <div class="form-group row" [ngClass]="{
         'has-danger':
           forma.controls['password1'].invalid &&
           forma.controls['password1'].touched
       }">
-        <label class="col-2 col-form-label">Password</label>
-        <div class="col-md-8">
-            <input class="form-control" type="password" placeholder="Password" formControlName="password1" />
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-md-8">
+                <input class="form-control" type="password" placeholder="Password" formControlName="password1" />
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row" [ngClass]="{
+        <div class="form-group row" [ngClass]="{
         'has-danger':
           forma.controls['password2'].invalid &&
           forma.controls['password2'].touched
       }">
-        <label class="col-2 col-form-label">Repita password</label>
-        <div class="col-md-8">
-            <input class="form-control" type="password" placeholder="Repita password" formControlName="password2" />
+            <label class="col-2 col-form-label">Repita password</label>
+            <div class="col-md-8">
+                <input class="form-control" type="password" placeholder="Repita password" formControlName="password2" />
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row" [ngClass]="{
+        <div class="form-group row" [ngClass]="{
         'has-danger':
           forma.controls['pasatiempos'].invalid &&
           forma.controls['pasatiempos'].touched
       }">
-        <label class="col-2 col-form-label">Pasatiempos</label>
-        <div class="col-md-8" formArrayName="pasatiempos">
-            <input *ngFor="
-          let pasatimepo of forma.controls['pasatiempos'].controls;
-          let i = index
-        " [formControlName]="i" class="form-control" type="text" />
-        </div>
+            <label class="col-2 col-form-label">Pasatiempos</label>
+            <div class="col-md-8" formArrayName="pasatiempos">
+                <input *ngFor="
+            let pasatimepo of forma.controls['pasatiempos'].controls;
+            let i = index
+          " [formControlName]="i" class="form-control" type="text" />
+            </div>
 
-        <button (click)="agregarPasatiempo()" type="button" class="btn btn-primary">
-      Nuevo
-    </button>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
-            <button type="submit" class="btn btn-outline-primary">
-        Guardar
+            <button (click)="agregarPasatiempo()" type="button" class="btn btn-primary">
+        Nuevo
       </button>
         </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+          Guardar
+        </button>
+            </div>
+        </div>
+        <hr /> {{ forma.valid }} <br /> {{ forma.status }}
+        <hr />
+        <!-- <pre>{{usuario | json}}</pre> -->
     </div>
-    <hr> {{ forma.valid }}
-    <br> {{forma.status}}
-    <hr>
-    <pre>{{usuario | json}}</pre>
 </form>
