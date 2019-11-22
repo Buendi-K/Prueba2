@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { Observable } from "rxjs";
@@ -10,18 +10,36 @@ import { reject } from "q";
   templateUrl: "./data.component.html",
   styles: []
 })
-export class DataComponent {
+export class DataComponent implements OnInit {
   forma: FormGroup;
+
+  
 
   usuario = {
     nombrecompleto: {
       nombre: "David",
       apellido: "Buendia"
     },
+
+    cumple: "14/09/1996",
     correo: "superubik@hotmail.com",
+    username: "Buendik",
     pasatiempos: ["Deporte", "Comer", "Dormir"]
   };
 
+  ngOnInit() {
+    this.forma.reset({
+      nombrecompleto: {
+        nombre: "David",
+        apellido: "Buendia"
+      },
+
+      cumple: "1996-09-14",
+      correo: "superubik@hotmail.com",
+      username: "Buendik",
+      pasatiempos: ["Deporte", "Comer", "Dormir"]
+    });
+  }
   constructor() {
     this.forma = new FormGroup({
       nombrecompleto: new FormGroup({
@@ -31,6 +49,8 @@ export class DataComponent {
         ]),
         apellido: new FormControl("", [Validators.required, this.noHerrera])
       }),
+
+      cumple: new FormControl("", Validators.required),
 
       correo: new FormControl("", [
         Validators.required,
@@ -55,15 +75,17 @@ export class DataComponent {
 
     // this.forma.setValue(this.usuario);
 
-
-    this.forma.controls["username"].valueChanges.subscribe(data =>{
+    this.forma.controls["cumple"].valueChanges.subscribe(data => {
       console.log(data);
     });
 
-    this.forma.controls["username"].statusChanges.subscribe(data =>{
+    this.forma.controls["username"].valueChanges.subscribe(data => {
       console.log(data);
     });
 
+    this.forma.controls["username"].statusChanges.subscribe(data => {
+      console.log(data);
+    });
   }
 
   agregarPasatiempo() {
